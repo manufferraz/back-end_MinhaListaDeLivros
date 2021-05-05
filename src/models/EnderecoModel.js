@@ -1,14 +1,15 @@
-import { v4 as uuidv4 } from 'uuid';
+const { v4: uuidv4 } = require('uuid');
 
 const connection = require('../database/connection');
 
 module.exports = {
 
-    async create(endereco){
+    async create(endereco , usuario_id){
         const endereco_id = uuidv4();
         endereco.endereco_id = endereco_id;
-        const result = await connection('endereco').insert(endereco);
-        return result;
+        endereco.usuario_id = usuario_id;
+        await connection('endereco').insert(endereco);
+        return endereco_id;
     },
 
     async getByID(endereco_id){

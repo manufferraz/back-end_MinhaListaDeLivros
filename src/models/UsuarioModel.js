@@ -7,8 +7,8 @@ module.exports = {
     async create(usuario){
         const usuario_id = uuidv4();
         usuario.usuario_id = usuario_id;
-        const result = await connection('usuario').insert(usuario);
-        return result;
+        await connection('usuario').insert(usuario);
+        return usuario_id;
     },
 
     async getByID(usuario_id){
