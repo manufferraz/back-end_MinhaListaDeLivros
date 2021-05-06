@@ -1,11 +1,13 @@
-const { celebrate, Segaments, Joi} = require("celebrate");
+const { celebrate , Segments , Joi} = require("celebrate");
 
 module.exports = {
     create: celebrate({
-        [Segments.BODY]: Joi.object().keys({
+        [Segments.PARAMS]: Joi.object().keys({
             usuario_id: Joi.string().required(),
-            rua: Joi.string().email().required(),
-            numero: Joi.string().required(),
+        }),
+        [Segments.BODY]: Joi.object().keys({
+            rua: Joi.string().required(),
+            numero: Joi.number().integer().positive().required(),
             bairro: Joi.string().required(),
             cidade: Joi.string().required(),
             estado: Joi.string().required(),
@@ -14,9 +16,6 @@ module.exports = {
     }),
     getByID: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
-            usuario_id: Joi.string().required(),
-        }),
-        [Segments.QUERY]: Joi.object().keys({
             endereco_id: Joi.string().optional(),
         }),
     }),
@@ -25,9 +24,8 @@ module.exports = {
             endereco_id: Joi.string().required(),
         }),
         [Segments.BODY]: Joi.object().keys({
-            endereco_id: Joi.string().optional(),
-            rua: Joi.string().email().optional(),
-            numero: Joi.string().optional(),
+            rua: Joi.string().optional(),
+            numero: Joi.number().integer().positive().optional(),
             bairro: Joi.string().optional(),
             cidade: Joi.string().optional(),
             estado: Joi.string().optional(),

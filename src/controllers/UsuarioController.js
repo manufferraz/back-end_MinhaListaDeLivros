@@ -7,7 +7,7 @@ module.exports = {
 
             const result = await UsuarioModel.create(newUser);
 
-            return response.status(200).json({usuario_id: result});
+            return response.status(200).json({user_id: result});
 
         } catch (error) {
             console.warn("Usuario creation failed:", error);
