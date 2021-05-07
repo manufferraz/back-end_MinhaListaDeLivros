@@ -6,6 +6,7 @@ exports.up = function(knex) {
     table.string('senha').notNullable();
     table.string('email').notNullable();
     table.string('frase').notNullable();
+    table.string('firebase_id').notNullable();
   });
 };
 
