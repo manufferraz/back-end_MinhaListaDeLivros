@@ -14,7 +14,7 @@ module.exports = {
 
             const result = await UsuarioModel.create(newUser);
 
-            return response.status(200).json({usuario_id: result});
+            return response.status(200).json({user_id: result});
 
         } catch (error) {
             console.warn("Usuario creation failed:", error);
@@ -46,6 +46,8 @@ module.exports = {
             const {usuario_id} = request.params;
             const newUser = request.body;
 
+            await Firebase.updateUser(newUser);
+            console.log("saiu");
             const result = await UsuarioModel.updateByID(usuario_id, newUser);
 
             return response.status(200).json({notification: "usuario updated successfully"});

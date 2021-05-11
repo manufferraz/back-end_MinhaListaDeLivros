@@ -16,7 +16,7 @@ module.exports = {
     }),
     getByID: celebrate({
         [Segments.PARAMS]: Joi.object().keys({
-            endereco_id: Joi.string().optional(),
+            endereco_id: Joi.string().required(),
         }),
     }),
     updateByID: celebrate({

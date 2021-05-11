@@ -7,7 +7,7 @@ module.exports = {
     async create(usuario){
         const usuario_id = uuidv4();
         usuario.usuario_id = usuario_id;
-        const result = await connection('usuario').insert(usuario);
+        await connection('usuario').insert(usuario);
         return usuario_id;
     },
 
@@ -18,6 +18,15 @@ module.exports = {
             .first();
 
         return result;
+    },
+
+    async getByFields(fields){ 
+        const result = await connection('usuario')
+            .where(fields)
+            .select('*')
+            .first();
+        
+        return result; 
     },
 
     async updateByID(usuario_id , usuario){

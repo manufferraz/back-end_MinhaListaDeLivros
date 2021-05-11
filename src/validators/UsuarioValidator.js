@@ -21,7 +21,7 @@ module.exports = {
         [Segments.BODY]: Joi.object().keys({
             username: Joi.string().optional(),
             email: Joi.string().email().optional(),
-            senha: Joi.string().min(6).optional(),
+            senha: Joi.string().optional(),
             frase: Joi.string().optional(),
         }).min(1),
     }),

@@ -1,3 +1,4 @@
+const { json, response } = require("express");
 const firebase = require("firebase/app");
 require("firebase/auth");
 
@@ -22,11 +23,40 @@ module.exports = {
 
     },
 
+    async updateUser(changes){
+        const user = await firebase.auth().currentUser;
+        const { username , email , senha } = changes;
+        
+        username && (user.updateProfile({
+            displayName: username,
+        }));
+        console.log("saiu1");
+        
+        /*email && user.updateProfile({
+            email: email,
+        });
+        console.log("saiu2");
+
+        senha && user.updatePassword(password);
+        console.log("saiu3");*/
+            
+        return response.json({notification: "Changes made successfully"}); 
+    },
+
     async login(email, password){
             const result = await firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password);
+            .auth()
+            .signInWithEmailAndPassword(email, password);
 
-        return result.newUser.uid;
+        return result.user.uid;
+    },
+
+    async logout(){
+            const result = await firebase
+            .auth()
+            .signOut();
+
+        return json({notification: "Logout succeeded"});
+        
     },
 };
