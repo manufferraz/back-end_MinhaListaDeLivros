@@ -30,7 +30,6 @@ module.exports = {
         username && (user.updateProfile({
             displayName: username,
         }));
-        console.log("saiu1");
         
         /*email && user.updateProfile({
             email: email,
