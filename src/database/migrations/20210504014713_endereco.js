@@ -6,7 +6,6 @@ exports.up = function(knex) {
         table.foreign('usuario_id').references('usuario_id').inTable("usuario").onDelete("cascade");
         table.string('rua').notNullable();
         table.int('numero').notNullable();
-        table.string('bairro').notNullable();
         table.string('cidade').notNullable();
         table.string('estado').notNullable();
         table.string('pais').notNullable();

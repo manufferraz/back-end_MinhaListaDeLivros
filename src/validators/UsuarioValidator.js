@@ -7,6 +7,7 @@ module.exports = {
             email: Joi.string().email().required(),
             senha: Joi.string().min(6).max(20).required(),
             frase: Joi.string().required(),
+            // Colocar foreign endereço?
         }),
     }),
     getByID: celebrate({

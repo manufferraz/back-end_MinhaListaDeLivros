@@ -1,4 +1,5 @@
 const EnderecoModel = require('../models/EnderecoModel');
+const { getAll } = require('../models/UsuarioModel');
 
 module.exports = {
     async create(request , response){
@@ -81,4 +82,12 @@ module.exports = {
             });
         }
     },
+    async getAll(req, res){
+        try {
+            const result = await EnderecoModel.getAll();
+            return res.status(200).json({result});
+        } catch (error) {
+            return res.status(500).json({error})
+        }
+    }
 };

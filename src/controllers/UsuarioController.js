@@ -7,7 +7,7 @@ module.exports = {
     async create(request, response){
         try {
             const newUser = request.body;
-
+            console.log(newUser);
             const uid = await Firebase.createNewUser(newUser.email, newUser.senha);
 
             delete newUser.password;

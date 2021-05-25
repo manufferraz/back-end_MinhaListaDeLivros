@@ -5,10 +5,17 @@ const connection = require('../database/connection');
 module.exports = {
 
     async create(usuario){
-        const usuario_id = uuidv4();
+        console.log(usuario);
+        try {
+         const usuario_id = uuidv4();
         usuario.usuario_id = usuario_id;
         await connection('usuario').insert(usuario);
         return usuario_id;
+
+        } catch (error) {
+            console.error(error);
+        }
+        
     },
 
     async getByID(usuario_id){
@@ -36,4 +43,8 @@ module.exports = {
         const result = await connection('usuario').where({usuario_id}).delete();
         return result;
     },
+    async getAll(){
+        const data = await connection('usuario').select("*");
+        console.log(data);
+    }
 };

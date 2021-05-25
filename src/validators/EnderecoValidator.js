@@ -8,7 +8,6 @@ module.exports = {
         [Segments.BODY]: Joi.object().keys({
             rua: Joi.string().required(),
             numero: Joi.number().integer().positive().required(),
-            bairro: Joi.string().required(),
             cidade: Joi.string().required(),
             estado: Joi.string().required(),
             pais: Joi.string().required(),
@@ -26,7 +25,6 @@ module.exports = {
         [Segments.BODY]: Joi.object().keys({
             rua: Joi.string().optional(),
             numero: Joi.number().integer().positive().optional(),
-            bairro: Joi.string().optional(),
             cidade: Joi.string().optional(),
             estado: Joi.string().optional(),
             pais: Joi.string().optional(),
